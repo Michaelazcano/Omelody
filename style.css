@@ -1,0 +1,141 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e9eeda; /* Updated background color */
+    margin: 0;
+    overflow: hidden; /* Hide potential overflow */
+    position: relative; /* Needed for positioning overlay */
+}
+
+
+.container {
+    display: flex;
+    justify-content: center; /* Center the main vinyl */
+    align-items: center;
+    width: 90%;
+    max-width: 1200px; /* Limit max width */
+    position: relative; /* Context for absolute positioning */
+}
+
+.vinyl-container {
+    position: relative; /* For positioning elements within */
+}
+
+.user1 {
+    /* Larger, centered vinyl */
+    width: 600px; /* Further increased size */
+    height: 600px; /* Further increased size */
+    position: relative; /* Make it a positioning context for user2 */
+}
+
+.user2 {
+    /* Smaller vinyl positioned absolutely relative to user1 */
+    width: 220px; /* Slightly increased size */
+    height: 220px; /* Slightly increased size */
+    position: absolute;
+    bottom: 15px; /* Adjust offset from bottom edge of user1 */
+    right: 15px;  /* Adjust offset from right edge of user1 */
+    z-index: 1; /* Ensure it's on top */
+}
+
+.vinyl-record {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a; /* Dark vinyl color */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Space between edge and label */
+    box-sizing: border-box; /* Include padding in size */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add some depth */
+}
+
+.user1 .vinyl-record {
+    padding: 30px; /* More padding for the larger vinyl */
+}
+
+
+.label {
+    width: 70%; /* Label size relative to vinyl */
+    height: 70%;
+    background-color: #ffffff; /* White label initially */
+    border-radius: 50%;
+    position: relative; /* For positioning text/video */
+    overflow: hidden; /* Clip video to the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack video and text */
+    border: 5px solid lightgreen; /* Green ring like image */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for highlight */
+}
+
+.user1 .label {
+     border: 8px solid lightgreen; /* Thicker ring for larger vinyl */
+}
+
+.user2 .label {
+    border: 5px solid purple; /* Purple ring for smaller vinyl */
+}
+
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if needed */
+    border-radius: 50%; /* Ensure video is clipped */
+    position: absolute; /* Position over the label */
+    top: 0;
+    left: 0;
+    background-color: #ccc; /* Placeholder background */
+    transform: scaleX(-1); /* Mirror the video */
+}
+
+.song-info {
+    position: absolute;
+    bottom: 10px; /* Position at the bottom */
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    z-index: 1; /* Ensure it's above the video */
+    text-align: center;
+    width: 80%; /* Limit width */
+}
+
+/* Basic styling for potential connector - uncomment and adjust if needed */
+/*
+.connector {
+    position: absolute;
+    width: 150px;
+    height: 10px;
+    background-color: #ccc;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-20deg); // Example positioning
+    z-index: -1; // Behind vinyls
+}
+*/
+
+/* --- Added for Talking Indicator --- */
+
+/* Highlight effect for the talking user's label */
+.user2 .label.talking { /* Target user2 specifically for now */
+    border-color: #ffcc00; /* Bright yellow border */
+    box-shadow: 0 0 15px #ffcc00; /* Add a glow */
+}
+
+/* Spin animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Class to apply the spin animation to the vinyl record */
+.vinyl-record.spinning {
+    animation: spin 4s linear infinite; /* Adjust duration as needed */
+}

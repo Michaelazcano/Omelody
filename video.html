@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinyl Webcam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="screen-overlay"></div> <!-- Added overlay element -->
+    <div class="container">
+        <div class="vinyl-container user1">
+            <div class="vinyl-record">
+                <div class="label">
+                    <!-- Webcam feed for user 1 will go here -->
+                    <video id="user1-video" autoplay playsinline></video>
+                    <!-- Song info for user 1 could go here -->
+                    <p class="song-info">User 1's Song</p>
+                </div>
+            </div>
+            <!-- Move user2 inside user1 -->
+            <div class="vinyl-container user2">
+                <div class="vinyl-record">
+                    <div class="label">
+                        <!-- Webcam feed for user 2 will go here -->
+                    <video id="user2-video" autoplay playsinline></video>
+                     <!-- Song info for user 2 could go here -->
+                    <p class="song-info">User 2's Song</p>
+                </div>
+            </div>
+        </div>
+        <!-- Optional: Decorative connector like in the image -->
+        <!-- <div class="connector"></div> -->
+    </div>
+
+    <script src="script.js"></script> <!-- We'll add basic JS later if needed -->
+</body>
+</html>
